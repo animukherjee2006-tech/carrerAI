@@ -1,8 +1,6 @@
-
 const mongoose = require('mongoose');
 
 const Userschema = new mongoose.Schema({
-
     name: {
         type: String,
         required: true,
@@ -26,6 +24,45 @@ const Userschema = new mongoose.Schema({
     profileimage: {
         type: String,
         default: ""
+    },
+    profileImagePublicId: {
+        type: String,
+        default: ""
+    },
+
+    headline: {
+        type: String,
+        default: "Software Engineer | Aspiring Technologist"
+    },
+
+    bio: {
+        type: String,
+        default: ""
+    },
+
+    githubUsername: {
+        type: String,
+        default: ""
+    },
+
+    portfolioUrl: {
+        type: String,
+        default: ""
+    },
+
+    linkedinUrl: {
+        type: String,
+        default: ""
+    },
+
+    resetPasswordToken: {
+        type: String,
+        default: null
+    },
+
+    resetPasswordExpires: {
+        type: Date,
+        default: null
     },
 
     // RESUME DETAILS
@@ -62,7 +99,32 @@ const Userschema = new mongoose.Schema({
         resumeId: {
             type: String,
             default: ""
+        },
+        rawText: {
+            type: String,
+            default: ""
         }
+    },
+
+    // ATS & RESUME ANALYSIS CACHE
+    resumeAnalysis: {
+        overallScore: { type: Number, default: 0 },
+        atsCompatibility: { type: Number, default: 0 },
+        impactScore: { type: Number, default: 0 },
+        brevityScore: { type: Number, default: 0 },
+        skillsFound: [{ type: String }],
+        missingSkills: [{ type: String }],
+        summary: { type: String, default: "" },
+        sectionFeedback: [{
+            section: { type: String },
+            status: { type: String },
+            feedback: { type: String }
+        }],
+        bulletImprovements: [{
+            original: { type: String },
+            improved: { type: String }
+        }],
+        analyzedAt: { type: Date, default: null }
     },
 
     education: [{
@@ -80,9 +142,16 @@ const Userschema = new mongoose.Schema({
         }
     }],
 
+    experience: [{
+        title: { type: String, default: "" },
+        company: { type: String, default: "" },
+        duration: { type: String, default: "" },
+        description: { type: String, default: "" }
+    }],
+
     targetRole: {
         type: String,
-        default: ""
+        default: "Full Stack Developer"
     },
 
     careerLevel: {
@@ -93,7 +162,14 @@ const Userschema = new mongoose.Schema({
 
     skills: [{
         type: String
-    }]
+    }],
+
+    preferences: {
+        theme: { type: String, default: 'dark' },
+        jobAlerts: { type: Boolean, default: true },
+        targetLocations: [{ type: String }],
+        expectedSalary: { type: String, default: "" }
+    }
 
 }, { timestamps: true });
 

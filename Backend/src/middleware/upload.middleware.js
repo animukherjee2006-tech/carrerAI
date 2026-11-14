@@ -17,14 +17,16 @@ const upload = multer({
             'image/png',
             'image/jpg',
             'image/webp',
-            'application/pdf'
+            'application/pdf',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/msword'
         ];
 
         if (allowedTypes.includes(file.mimetype)) {
             cb(null, true);
         } else {
             cb(
-                new Error('Only JPG, PNG, WEBP and PDF files are allowed')
+                new Error('Only JPG, PNG, WEBP, PDF, and DOCX files are allowed')
             );
         }
     }

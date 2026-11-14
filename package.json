@@ -1,4 +1,13 @@
 {
+  "name": "career-ai",
+  "version": "2.0.0",
+  "description": "Next-Gen AI Career Guidance, Resume ATS Scoring, and Interview Preparation Platform",
+  "scripts": {
+    "start:backend": "npm --prefix Backend run dev",
+    "start:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "start:ai": "cd AI && venv\\Scripts\\python.exe run.py"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.7"
   }

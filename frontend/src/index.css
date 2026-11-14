@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable manual class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 110px;
@@ -7,7 +10,15 @@ html {
 
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  /* Default light mode background & text */
+  background: #ffffff;
+  color: #0f172a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode background & text applied when the .dark class is on <html> */
+.dark body {
   background: #020617;
   color: #f8fafc;
-  font-family: Arial, sans-serif;
 }
